@@ -47,6 +47,11 @@ export class QueryExpressionMap {
     selects: SelectQuery[] = [];
 
     /**
+     * Data needs to be SELECT-ed.
+     */
+    computedSelects: SelectQuery[] = [];
+
+    /**
      * Whether SELECT is DISTINCT.
      */
     selectDistinct: boolean = false;

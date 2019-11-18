@@ -160,6 +160,18 @@ export class SelectQueryBuilder<Entity> extends QueryBuilder<Entity> implements 
     }
 
     /**
+     * Adds new computed fields selection to the SELECT query.
+     */
+    addSelectAndMap(selection: string, selectionAliasName?: string, columnType?: string): this {
+        if (selection) {
+            this.expressionMap.computedSelects.push({ selection: selection, aliasName: selectionAliasName, columnType: columnType });
+            this.addSelect(selection, selectionAliasName);
+        }
+        
+        return this;
+    }
+
+    /**
      * Sets whether the selection is DISTINCT.
      */
     distinct(distinct: boolean = true): this {

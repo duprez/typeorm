@@ -154,9 +154,7 @@ export class RawSqlResultsToEntityTransformer {
 
         this.expressionMap.computedSelects.forEach(computedSelect => {
             if (computedSelect.aliasName) {
-                const fields: any[] = computedSelect.aliasName.split(".");
-                console.log("fields", fields);
-                let entityPart = entity;
+                const fields: any[] = computedSelect.aliasName.split(".");                let entityPart = entity;
 
                 if (fields[0] === alias.name) {
                     fields.shift();
@@ -169,7 +167,6 @@ export class RawSqlResultsToEntityTransformer {
                             entityPart = entityPart[field];
                         } else {
                             const value = this.driver.prepareHydratedValue(rawResults[0][computedSelect.aliasName as string], computedSelect.columnType as string);
-                            console.log("valor a pushear", value);
                             entityPart[field] = value;
                         }
                     });

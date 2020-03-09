@@ -162,10 +162,19 @@ export class SelectQueryBuilder<Entity> extends QueryBuilder<Entity> implements 
     /**
      * Adds new computed fields selection to the SELECT query.
      */
-    addSelectAndMap(selection: string, selectionAliasName?: string, columnType?: string): this {
+    /*addSelectAndMap(selection: string, selectionAliasName?: string, columnType?: string): this {
         if (selection) {
             this.expressionMap.computedSelects.push({ selection: selection, aliasName: selectionAliasName, columnType: columnType });
             this.addSelect(selection, selectionAliasName);
+        }
+        
+        return this;
+    }*/
+
+    addSelectAndMap(selection: string, alias: string, mapToProperty: string, columnType?: string): this {
+        if (selection) {
+            this.expressionMap.computedSelects.push({ selection: selection, aliasName: alias, mapToProperty: mapToProperty, columnType: columnType });
+            this.addSelect(selection, alias);
         }
         
         return this;

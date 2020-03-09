@@ -153,8 +153,9 @@ export class RawSqlResultsToEntityTransformer {
         let hasData = false;
 
         this.expressionMap.computedSelects.forEach(computedSelect => {
-            if (computedSelect.aliasName) {
-                const fields: any[] = computedSelect.aliasName.split(".");                let entityPart = entity;
+            if (computedSelect.aliasName && computedSelect.mapToProperty) {
+                const fields: any[] = computedSelect.mapToProperty.split(".");
+                let entityPart = entity;
 
                 if (fields[0] === alias.name) {
                     fields.shift();
